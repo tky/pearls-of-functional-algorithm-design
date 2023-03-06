@@ -36,4 +36,17 @@ class MinfreeSpec extends AnyFlatSpec with Matchers {
     func(Array(0, 1, 2, 3, 4, 5, 6, 7, 9)) should be(8)
     func(Array(0, 1, 2, 4, 5, 6, 7, 8, 9)) should be(3)
   }
+
+  "minfree2" should "find the minimum free number" in {
+    minfree2(Array(0, 1, 2, 3, 4, 5, 6, 7, 9)) should be(8)
+    minfree2(Array(0, 1, 2, 3, 4, 5, 6, 8, 9)) should be(7)
+    minfree2(Array(0, 1, 2, 3, 4, 5, 7, 8, 9)) should be(6)
+    minfree2(Array(0, 1, 2, 3, 4, 6, 7, 8, 9)) should be(5)
+    minfree2(Array(0, 1, 2, 3, 5, 6, 7, 8, 9)) should be(4)
+    minfree2(Array(0, 1, 2, 4, 5, 6, 7, 8, 9)) should be(3)
+    minfree2(Array(0, 1, 3, 4, 5, 6, 7, 8, 9)) should be(2)
+    minfree2(Array(0, 2, 3, 4, 5, 6, 7, 8, 9)) should be(1)
+    minfree2(Array(1, 2, 3, 4, 5, 6, 7, 8, 9)) should be(0)
+  }
+
 }
