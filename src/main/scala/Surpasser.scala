@@ -19,4 +19,30 @@ object Surpasser {
     case Nil     => Nil
     case x :: xs => (x :: xs) :: tails(xs)
   }
+
+  def table(xs: List[Char]): List[(Char, Int)] = xs match {
+    case List(x) => List((x, 0))
+    case xs => {
+      val m = xs.size
+      val n = m / 2
+      val (ys, zs) = xs.splitAt(n)
+      join(m - n, table(ys), table(zs))
+    }
+  }
+
+  def join(
+      n: Int,
+      txs: List[(Char, Int)],
+      tys: List[(Char, Int)]
+  ): List[(Char, Int)] =
+    (n, txs, tys) match {
+      case (0, tsx, Nil) => txs
+      case (n, Nil, tsy) => tys
+      case (n, ((x, c) :: txs2), ((y, d) :: tys2)) =>
+        if (x < y) (x, c + n) :: join(n, txs2, tys)
+        else (y, d) :: join(n - 1, txs, tys2)
+      case _ => Nil
+    }
+
+  def msc2(xs: List[Char]): Int = table(xs).map(_._2).max
 }

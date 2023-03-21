@@ -16,4 +16,9 @@ class SurpasserSpec extends AnyFlatSpec with Matchers {
     // 5
     msc(List('N', 'E', 'R', 'A', 'T', 'I', 'N', 'G')) should be(5)
   }
+
+  "msc2" should "return the max surpasser count" in {
+    msc2(List('G', 'E', 'N', 'E', 'R', 'A', 'T', 'I', 'N', 'G')) should be(6)
+    msc2(List('N', 'E', 'R', 'A', 'T', 'I', 'N', 'G')) should be(5)
+  }
 }
