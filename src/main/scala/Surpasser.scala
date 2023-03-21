@@ -36,8 +36,8 @@ object Surpasser {
       tys: List[(Char, Int)]
   ): List[(Char, Int)] =
     (n, txs, tys) match {
-      case (0, tsx, Nil) => txs
-      case (n, Nil, tsy) => tys
+      case (0, txs, Nil) => txs
+      case (n, Nil, tys) => tys
       case (n, ((x, c) :: txs2), ((y, d) :: tys2)) =>
         if (x < y) (x, c + n) :: join(n, txs2, tys)
         else (y, d) :: join(n - 1, txs, tys2)
