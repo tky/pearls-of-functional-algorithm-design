@@ -12,5 +12,6 @@ class SaddlebackSearchSpec extends AnyFlatSpec with Matchers {
     invert1(f, z) should be(expected)
     invert2(f, z) should be(expected)
     invert3(f, z).sortBy(_._1) should be(expected)
+    invert4(f, z).sortBy(_._1) should be(expected)
   }
 }

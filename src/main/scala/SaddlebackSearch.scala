@@ -70,5 +70,19 @@ object SaddlebackSearch {
     }
   }
 
+  def find2(u: Int, v: Int, f: (Int, Int) => Int, z: Int): Seq[(Int, Int)] = {
+    if (u > z || v < 0) {
+      Seq.empty
+    } else {
+      val zd = f(u, v)
+      if (zd < z) find(u + 1, v, f, z)
+      else if (zd == z) (u, v) +: find(u + 1, v - 1, f, z)
+      else find(u, v - 1, f, z)
+    }
+  }
+
   def invert3(f: (Int, Int) => Int, z: Int): Seq[(Int, Int)] = find(0, z, f, z)
+
+  def invert4(f: (Int, Int) => Int, z: Int): Seq[(Int, Int)] = find2(0, z, f, z)
+
 }
